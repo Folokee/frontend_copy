@@ -38,12 +38,13 @@ function Article(article) {
 
 function Results(props) {
   const query = props.query;
+  const domain = props.domain ; 
   let [articlesq, setArticles] = useState([]);
     useEffect(() => {
       SendQuery();
     }, []);
   let SendQuery = async () => {
-    let response = await fetch(`/api/articles/sr/${query}`);
+    let response = await fetch(`/api/articles/sr/${domain}/${query}`);
     let data = await response.json()
     setArticles(data)
   };

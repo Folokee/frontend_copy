@@ -5,10 +5,10 @@ import image2 from './../images/V1.png'
 import  image3 from './../images/V2.png'
 
 
-const Affich=({id,name,email}) => {
+const Affich=({setmods , mods , id,name,email}) => {
     let modId = id;
   const navigate = useNavigate();
-  let [mod, setMod] = useState(null);
+  let [mod, setMod] = useState({});
   let response
 
   useEffect(() => {
@@ -43,6 +43,7 @@ const Affich=({id,name,email}) => {
   };
 
   let deleteMod = async () => {
+    setmods( mods.filter(item => item.id === modId) ) ;
     response = await fetch(`/api/mods/${modId}`, {
       method: "DELETE",
       headers: {
@@ -112,7 +113,7 @@ function Infocomp() {
             <div className='flex flex-col  w-full h-full  sm:ml-10 sm:pl-10 mb-5 mt-5  sm:mr-10 sm:pr-10 font-signature '>
                {
                    mods.map((mod,index) =>(
-                       <Affich {...mod} currentIndex={currentIndex} key={index} />
+                       <Affich setmods={setMods} mods={mods} {...mod} currentIndex={currentIndex} key={index} />
                    ))
                }
                <div className='flex  justify-center items-center mt-10 mb-10'>

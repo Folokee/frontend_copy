@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,  useNavigate }from "react";
 import Word from "./../images/word.svg";
 import Author from "./../images/author.svg";
 import Instituts from "./../images/instituts.svg";
@@ -15,6 +15,8 @@ function Filter({ title, icon }) {
     setIcon((currentIcon) => (currentIcon === downarrow ? rightparrow : downarrow));
     setIsSearchVisible(!isSearchVisible);
   }
+  const modifpage = useNavigate();
+  const [value, setValue] = useState() ; 
   return (
     <div  className=" bg-[#c3eefb] rounded-xl cursor-pointer shadow-md p-2 m-4  h-auto w-auto relative">
       <div className=" bg-[#c3eefb] relative flex justify-center">
@@ -28,16 +30,22 @@ function Filter({ title, icon }) {
           <img onClick={changeIcon} src={icone} className="h-6 w-6" alt="" />
         </div>
       </div>
-      {isSearchVisible && (
+      {  isSearchVisible && (
         <div className=" relative m-4 ">
           <input
             type="text"
+            value={value}
+            onchange={ (e)=>{ setValue(e.target.value)  }}
             placeholder="Search..."
             className="border p-2 rounded-xl w-full"
           />
+          <button  onClick={ () =>  {
+            modifpage(`/search/${title}/${value}`);window.location.reload();
+          }}>
           <div className="absolute inset-y-0 right-0 pl-6 pr-3 flex items-center ">
-        <img src={loop} className="h-6 w-6 text-gray-400" />
+          <img src={loop} className="h-6 w-6 text-gray-400" />
           </div>
+          </button>
         </div>
 
       )}
@@ -65,6 +73,7 @@ const filters = [
 ];
 
 function Filters() {
+
   return (
     <div className="">
       <h4 className="text-[#15245B] font-poppins text-20px font-bold tracking-wide uppercase m-4 md:text-30px lg:text-40px">
