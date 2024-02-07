@@ -3,12 +3,6 @@ import Accountsidebar2 from "../components/accountsidebar2";
 
 
 function Userinfo ({ mdrtr }) {
-
-  
-
-
-
-
     return(
         <div className='bg-[#c3eefb] min-h-screen font-signature'>
               <div className="flex flex-col sm:grid sm:grid-cols-2   ">

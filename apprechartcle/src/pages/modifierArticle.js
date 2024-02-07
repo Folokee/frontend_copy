@@ -7,9 +7,7 @@ import { useParams } from 'react-router-dom';
 function ModifierArticle() {
   const param = useParams()
   const artid = param.pk
-  console.log(artid)
   let [article, setArticle] = useState(null);
-  let response
 
   useEffect(() => {
     getArticle();
@@ -19,10 +17,8 @@ function ModifierArticle() {
     let data = await response.json();
     setArticle(data);
   }
-  console.log(article)
-
-
-  const [editedArticle, setEditedArticle] = useState({ ...article });
+  
+  let [editedArticle, setEditedArticle] = useState({...article});
   const [editableField, setEditableField] = useState(null);
 
   const handleEdit = (field) => {
@@ -76,14 +72,14 @@ function ModifierArticle() {
       <div className="relative cursor-pointer shadow-md p-2 m-2 h-auto w-auto bg-[#F5F5F5] rounded-2xl md:p-6 md:m-20">
           <img src={ArticleIcon} alt="" className="w-16 h-16" />
         
-        {renderField("Title", "title")}
-        {renderField("Author", "author")}
+        {renderField("Title", "titre")}
+        {renderField("Author", "auteurs")}
         {renderField("Institutions", "institutions")}
-        {renderField("Keywords", "keyword")}
-        {renderField("References", "références")}
-        {renderField("Summary", "sumup")}
-        {renderField("Date", "date")}
-        {renderField("Details", "details")}
+        {renderField("Keywords", "mot_cles")}
+        {renderField("References", "references")}
+        {renderField("Summary", "resume")}
+        {renderField("Date", "date_pub")}
+        {renderField("Details", "contenu")}
 
         <div className="flex items-center space-x-4 p-2 md:p-4">
           {editableField ? (

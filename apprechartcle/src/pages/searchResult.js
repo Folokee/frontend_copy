@@ -2,8 +2,10 @@ import React from "react" ;
 import SearchBar from "./../components/searchbar" ;
 import Filtres  from "./../components/Filtre";
 import Results from "../components/Results";
+import { useParams } from 'react-router-dom';
 function SearchResult (){
-
+   const param = useParams()
+   const query = param.query
     return (
         
       <div className="  w-ful h-full bg-[#FFFFFF]  top-0 left-0 right-0 ">
@@ -18,7 +20,7 @@ function SearchResult (){
                 <Filtres/>
              </div>
              <div className=" w-full md:w-2/3 lg:w-3/4 p-4">
-                <Results/>
+                <Results query={query}/>
              </div>
          </div>
       </div>

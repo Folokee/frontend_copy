@@ -20,7 +20,7 @@ const Affich=(props) => {
              <p className=' ml-2  font-medium text-11px sm:text-14px md:text-19px  text-[#15245B]'>{article.date_pub}</p>
              </div>
              <div className=" font-medium mt-2   mb-2 sm:ml-10">
-             <Link to="/modifierArticle">  <button  className=" px-7 py-1  sm:px-14 sm:py-1 bg-[#15245B] text-[#FAFAFA] text-11px sm:text-14px md:text-19px   sm:ml-2 sm:mb-2  mr-1 rounded-full sm:pr-6 sm:pl-6" onClick={() => {modifpage(`/modifrtcl/${article.id}`)} }> Modifier</button> </Link>
+              <button  className=" px-7 py-1  sm:px-14 sm:py-1 bg-[#15245B] text-[#FAFAFA] text-11px sm:text-14px md:text-19px   sm:ml-2 sm:mb-2  mr-1 rounded-full sm:pr-6 sm:pl-6" onClick={() => {modifpage(`/modifrtcl/${article.id}`)} }> Modifier</button>
               <button className=" px-5 py-1 sm:px-10 sm:py-1 bg-[#FAFAFA] text-[#15245B] text-11px sm:text-14px md:text-19px  rounded-full border-2 border-[#15245B] sm:pr-4 sm:pl-4 ">Supprimer</button>
 
              </div>

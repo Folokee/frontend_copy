@@ -9,7 +9,8 @@ import ProfilSettings from "./profileSettings";
 import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
 
-function UserAccount({user}) {
+function UserAccount(props) {
+  const user = props.user
   const history = new useNavigate() ; 
   const [activeTab, setActiveTab] = useState("favorites");
 
@@ -18,7 +19,7 @@ function UserAccount({user}) {
       case "editProfile":
         return <EditProfil user={user} />;
       case "favorites":
-        return <Favoris />;
+        return <Favoris user={user}/>;
       case "profileSettings":
         return <ProfilSettings user={user}/>;
       default:

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import nfav from './../images/nfav.svg';
 import fav from './../images/fav.svg';
 import { Link } from "react-router-dom";
@@ -81,7 +81,20 @@ const Articles = [
   },
 ];
 
-function Favourites() {
+function Favourites(props) {
+  const user=props.user
+  console.log(user)
+  let [articlesfav, setArticlesFav] = useState([]);
+    useEffect(() => {
+      getArticlesFav();
+    }, []);
+
+    let getArticlesFav = async () => {
+     let response = await fetch(`/api/article/favoris/${user}`);
+     let data = await response.json();
+     setArticlesFav(data);
+   };
+   console.log(articlesfav)
   return (
     <div className="">
       <h4 className="text-[#15245B] font-poppins font-bold text-30px tracking-wide uppercase m-4 md:text-40px lg:text-50px ">

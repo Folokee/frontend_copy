@@ -78,7 +78,7 @@ const userData = {
 
 return (
   <div className="App">
- {/*          {   none && <Router>
+       {   none && <Router>
    
    <Routes>
      <Route path="/" element={<Pageprncpl />} />
@@ -87,23 +87,24 @@ return (
    </Routes>
 
 </Router>
-} */}
-  {/* {  user && <Router>
+}
+  {  user && <Router>
         <Navbar />
     <Routes>
       <Route path="/" element={<Main/>} />
       <Route path="/search" element={<Search/>} />
-      <Route path="/userAccount" element={<UserAccount/>} />
+      <Route path="/search/:query" element={<SearchResult />} />
+      <Route path="/userAccount" element={<UserAccount user={Cookies.get("NAME")} />} />
     </Routes>
-  </Router> } */}  
-  {/* {   admin && <Router>
+  </Router> } 
+  {   admin &&  <Router>
         <Navbaradmin />
     <Routes>
       <Route path="/" element={<Homeadmin/>} />
-      <Route path="/editProfil" element={<EditProfil/>} />
+      <Route path="/editProfil/:pseudo" element={<EditProfil />} />
     </Routes>
-  </Router>    } */}
-  {   /* moderateur &&   */<Router>
+  </Router>    }
+  {   moderateur &&  <Router>
   
         <Navbarmdrtr />
     <Routes>
