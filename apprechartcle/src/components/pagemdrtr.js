@@ -7,6 +7,14 @@ const Affich=(props) => {
     const article = props.article;
 
     const modifpage = useNavigate()
+    const deleteArticle = async (id) => {
+       props.setArticles( props.articles.filter(item => item.id != id) )
+      let response = await fetch(`/api/article/${id}`,{
+        method: "DELETE"
+    }) ; 
+    let data = await response.json() ; 
+
+  }
 
     return (
       <section>
@@ -21,7 +29,7 @@ const Affich=(props) => {
              </div>
              <div className=" font-medium mt-2   mb-2 sm:ml-10">
               <button  className=" px-7 py-1  sm:px-14 sm:py-1 bg-[#15245B] text-[#FAFAFA] text-11px sm:text-14px md:text-19px   sm:ml-2 sm:mb-2  mr-1 rounded-full sm:pr-6 sm:pl-6" onClick={() => {modifpage(`/modifrtcl/${article.id}`)} }> Modifier</button>
-              <button className=" px-5 py-1 sm:px-10 sm:py-1 bg-[#FAFAFA] text-[#15245B] text-11px sm:text-14px md:text-19px  rounded-full border-2 border-[#15245B] sm:pr-4 sm:pl-4 ">Supprimer</button>
+              <button className=" px-5 py-1 sm:px-10 sm:py-1 bg-[#FAFAFA] text-[#15245B] text-11px sm:text-14px md:text-19px  rounded-full border-2 border-[#15245B] sm:pr-4 sm:pl-4 "  onClick={()=> { deleteArticle(article.id )   }}>Supprimer</button>
 
              </div>
 
@@ -51,7 +59,7 @@ function Pagemdrtr() {
             <div className='flex flex-col pt-3 sm:pt-10 w-full h-full  sm:ml-10 sm:pl-10 mb-5 mt-5  sm:mr-10 sm:pr-10 font-signature '>
                {
                    articles.map((haha,index) =>(
-                       <Affich article = {haha} currentIndex={currentIndex} key={index} />
+                       <Affich  setArticles={setArticles} articles={articles} article = {haha} currentIndex={currentIndex} key={index} />
                    ))
                }
 
